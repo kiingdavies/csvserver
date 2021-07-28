@@ -1,7 +1,6 @@
 #!/bin/bash
 
 index=0
-
 file="inputFile.csv"
 
 if [ $# -ne 1 ]
