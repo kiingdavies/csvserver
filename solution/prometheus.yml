@@ -1,9 +1,11 @@
 ---
 #global settings
 global:
-  scrape_interval: 15s
+  scrape_interval: 5s
   # scrape_timeout: 10s
-  evaluation_interval: 15s 
+  external_labels:
+    monitor: 'infracloud-monitor'
+  evaluation_interval: 5s 
 
 #alerting settings
 # alerting:
@@ -13,9 +15,9 @@ global:
     # - alertmanager: 9093
 
 # rule settings
-rule_files:
-  - "first_rule.yml/rules"
-  - "second_rules.yml/.rules"
+# rule_files:
+#   - "first_rule.yml/rules"
+#   - "second_rules.yml/.rules"
 
 # scrape config
 # metrics or the exporters that we require to get pulled
@@ -25,17 +27,17 @@ scrape_configs:
     honor_labels: false
     honor_timestamps: true
     sample_limit: 0
-    scrape_interval: 30s
+    scrape_interval: 5s
     static_configs:
     - targets:
-      - "test_app_2:5000"
-  - job_name: 'test_exporter_2'
-    metrics_path: /metrics
-    honor_labels: false
-    honor_timestamps: true
-    sample_limit: 0
-    scrape_interval: 30s
-    static_configs:
-    - targets:
-      - "localhost:5000"
+      - "localhost:9393"
+  # - job_name: 'test_exporter_2'
+  #   metrics_path: /metrics
+  #   honor_labels: false
+  #   honor_timestamps: true
+  #   sample_limit: 0
+  #   scrape_interval: 30s
+  #   static_configs:
+  #   - targets:
+  #     - "localhost:9393"
 
