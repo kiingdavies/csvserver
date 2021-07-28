@@ -1,0 +1,26 @@
+version: "3.8"
+# networks:
+#   Prom-net:
+#     driver: bridge
+
+services:
+  server:
+    image: "infracloudio/csvserver:latest"
+    ports:
+      - "9393:9300"
+    environment:
+      CSVSERVER_BORDER: Orange
+    volumes:
+      - .\inputFile.csv:/csvserver/inputdata
+
+      # OR
+# services:
+    # web:
+    #     build: .
+    #     image: "infracloudio/csvserver:latest"
+    #     ports:
+    #         - "9393:9300"
+    #     environment:
+    #         CSVSERVER_BORDER: Orange
+    #     volumes:
+    #         - .\inputFile.csv:/csvserver/inputdata
